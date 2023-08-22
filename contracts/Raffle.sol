@@ -31,8 +31,6 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     } // uint256 0 = OPEN, 1 = CALCULATING
 
     /* State Variables */
-    uint256 private immutable i_entranceFee;
-    address payable[] private s_players;
     VRFCoordinatorV2Interface private immutable i_vrfCoordinator;
     bytes32 private immutable i_gasLane;
     uint64 private immutable i_subscriptionId;
@@ -41,10 +39,12 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     uint32 private constant NUM_WORDS = 1;
 
     // Lottery variables
-    address private s_recentWinner;
-    RaffleState private s_raffleState;
-    uint256 private s_lastTimeStamp;
     uint256 private immutable i_interval;
+    uint256 private immutable i_entranceFee;
+    uint256 private s_lastTimeStamp;
+    address private s_recentWinner;
+    address payable[] private s_players;
+    RaffleState private s_raffleState;
     // bool uint256 private s_isOpen; // to pending, open, closed, calculating
 
     /* Events */
